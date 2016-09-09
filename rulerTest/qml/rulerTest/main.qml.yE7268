@@ -1,0 +1,53 @@
+// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
+
+import QtQuick 1.1
+import MyLibrary 1.0
+
+Rectangle {
+    width: 1800
+    height: 800
+    x: 100
+    color : "white"
+
+
+    MouseArea {
+        anchors.fill: parent
+        focus : true
+
+        onPositionChanged: {
+            verticalRulerId.fov_vertical_mm = 1 + mouse.x
+            horizontalRulerId.fov_vertical_mm =  1 + mouse.x
+        }
+
+
+    }
+
+    Keys.onPressed:
+    {
+        console.log(event.key);
+    }
+
+    Ruler{
+      id  : verticalRulerId
+      name:  "verticalRuler"
+      width:120
+      height: parent.height
+      anchors.centerIn: parent
+      fov_vertical_pix: parent.height //1080.0
+      color:"black"
+      //metricUnits : false
+      visible:true
+    }
+
+    Ruler{
+      id:   horizontalRulerId
+      name:  "horizontalRuler"
+      width:parent.height
+      height: 120
+      anchors.centerIn: parent
+      fov_vertical_pix: parent.height //1080.0
+      color:"black"
+      //metricUnits : false
+      visible:true
+    }
+}

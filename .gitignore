@@ -1,0 +1,9 @@
+*.o
+moc*.c*
+*~
+*.pro.user
+Makefile
+.cproject
+.project
+.settings/
+build-*
