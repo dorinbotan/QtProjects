@@ -51,7 +51,6 @@ bool Ruler::metricUnits() const
 void Ruler::setUnitMode(const bool &metricUnits){
     m_metricUnits = metricUnits;
     m_repaint_needed=true;
-
 }
 
 
