@@ -22,8 +22,7 @@ struct ga_struct
 
 typedef vector<ga_struct> ga_vector;			// для краткости
 
-void init_population(ga_vector &population,
-                     ga_vector &buffer )
+void init_population(ga_vector &population, ga_vector &buffer )
 {
     int tsize = GA_TARGET.size();
 
@@ -71,16 +70,6 @@ inline void sort_by_fitness(ga_vector &population)
     sort(population.begin(), population.end(), fitness_sort);
 }
 
-void elitism(ga_vector &population,
-                ga_vector &buffer, int esize )
-{
-    for (int i=0; i<esize; i++)
-    {
-        buffer[i].str = population[i].str;
-        buffer[i].fitness = population[i].fitness;
-    }
-}
-
 void mutate(ga_struct &member)
 {
     int tsize = GA_TARGET.size();
@@ -88,6 +77,16 @@ void mutate(ga_struct &member)
     int delta = (rand() % 90) + 32;
 
     member.str[ipos] = ((member.str[ipos] + delta) % 122);
+}
+
+void elitism(ga_vector &population,
+             ga_vector &buffer, int esize )
+{
+    for (int i=0; i<esize; i++)
+    {
+        buffer[i].str = population[i].str;
+        buffer[i].fitness = population[i].fitness;
+    }
 }
 
 void mate(ga_vector &population, ga_vector &buffer)
@@ -105,7 +104,7 @@ void mate(ga_vector &population, ga_vector &buffer)
         spos = rand() % tsize;
 
         buffer[i].str = population[i1].str.substr(0, spos) +
-                        population[i2].str.substr(spos, esize - spos);
+                population[i2].str.substr(spos, esize - spos);
 
         if (rand() < GA_MUTATION) mutate(buffer[i]);
     }
@@ -119,7 +118,9 @@ inline void print_best(ga_vector &gav)
 inline void swap(ga_vector *&population,
                  ga_vector *&buffer)
 {
-    ga_vector *temp = population; population = buffer; buffer = temp;
+    ga_vector *temp = population;
+    population = buffer;
+    buffer = temp;
 }
 
 int main()
