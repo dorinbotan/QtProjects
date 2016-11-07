@@ -8,11 +8,15 @@ class MyClass
 public:
     MyClass() {
         qDebug() << "######";
+        tmp = 111111;
     }
 
     void testFuunction() {
-        qDebug() << "!!!!!!";
+        qDebug() << tmp;
     }
+
+private:
+    int tmp;
 };
 
 #endif // MYCLASS_H
