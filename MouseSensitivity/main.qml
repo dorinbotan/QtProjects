@@ -9,6 +9,7 @@ Item {
     {
         id: mouseWindow
         anchors.fill: parent
+        sensitivity: 6
 
         MouseArea
         {

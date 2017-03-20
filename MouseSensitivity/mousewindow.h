@@ -20,7 +20,12 @@ protected:
     void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
 
 private:
+    void initMultiplier();
+    QPoint getNewPos(QPoint, QPoint, double);
+
+    QMap<int, double> multiplier;
     int sensitivity;
+    QPoint oldPos;
 };
 
 #endif // MOUSEWINDOW_H

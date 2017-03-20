@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 
     QDeclarativeView view;
     view.setSource(QUrl("C:/Users/db/Documents/Qt/MouseSensitivity/main.qml"));
-    view.showFullScreen();
+    view.show();
 
     return app.exec();
 }

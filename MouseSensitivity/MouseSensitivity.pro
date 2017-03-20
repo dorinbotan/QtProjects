@@ -8,4 +8,5 @@ HEADERS += \
     mousewindow.h
 
 OTHER_FILES += \
-    main.qml
+    main.qml \
+    cursor-arrow.png \
