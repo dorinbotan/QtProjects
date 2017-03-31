@@ -12,6 +12,8 @@ class MainWindow : public QDeclarativeItem
     Q_OBJECT
 
 public:
+  /*! Constructor
+  */
     MainWindow(QDeclarativeItem * = 0);
 
 public slots:
