@@ -19,7 +19,7 @@
  * limitations under the License.
  */
 
-#include "letterconverter.h"
+#include "include/letterconverter.h"
 
 LetterConverter::LetterConverter(QObjectPrivate &dd, QObject *parent) :
     QObject(dd, parent)

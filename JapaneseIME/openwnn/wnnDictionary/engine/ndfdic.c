@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-#include "nj_lib.h"
-#include "nj_err.h"
-#include "nj_ext.h"
-#include "nj_dic.h"
-#include "njd.h"
+#include "../include/nj_lib.h"
+#include "../include/nj_err.h"
+#include "../include/nj_ext.h"
+#include "../include/nj_dic.h"
+#include "../include/njd.h"
 
 #define DATA_SIZE (10)
 #define DATA_OFFSET_FHINSI          (0) 

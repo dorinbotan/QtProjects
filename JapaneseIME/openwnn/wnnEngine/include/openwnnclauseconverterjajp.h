@@ -40,7 +40,6 @@ public:
     void setDictionary(OpenWnnDictionary *dict);
     QList<WnnClause> convert(const QString &input);
     QSharedPointer<WnnSentence> consecutiveClauseConvert(const QString &input);
-
 };
 
 #endif // OPENWNNCLAUSECONVERTERJAJP_H

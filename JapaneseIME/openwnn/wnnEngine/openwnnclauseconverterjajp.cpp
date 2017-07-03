@@ -19,9 +19,9 @@
  * limitations under the License.
  */
 
-#include "openwnnclauseconverterjajp.h"
-#include "openwnndictionary.h"
-#include "wnnword.h"
+#include "include/openwnnclauseconverterjajp.h"
+#include "include/openwnndictionary.h"
+#include "include/wnnword.h"
 #include <QtCore/private/qobject_p.h>
 
 class OpenWnnClauseConverterJAJPPrivate : public QObjectPrivate
@@ -93,12 +93,16 @@ public:
         /* check if the part of speech is valid */
         if (fzk == NULL) {
             if (connectible(stem.partOfSpeech.right, terminal.left)) {
-                clause.reset(new WnnClause(input, stem));
+                QSharedPointer<WnnClause> other =
+                       QSharedPointer<WnnClause>(new WnnClause(input, stem));
+                clause.swap(other);
             }
         } else {
             if (connectible(stem.partOfSpeech.right, fzk->partOfSpeech.left)
                 && connectible(fzk->partOfSpeech.right, terminal.left)) {
-                clause.reset(new WnnClause(input, stem, *fzk));
+                QSharedPointer<WnnClause> other =
+                       QSharedPointer<WnnClause>(new WnnClause(input, stem, *fzk));
+                clause.swap(other);
             }
         }
         if (clause == NULL) {

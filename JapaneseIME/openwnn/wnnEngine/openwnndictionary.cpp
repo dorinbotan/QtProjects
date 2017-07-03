@@ -19,18 +19,19 @@
  * limitations under the License.
  */
 
-#include "nj_lib.h"
-#include "nj_err.h"
-#include "nj_ext.h"
-#include "nj_dic.h"
-
+#include "../wnnDictionary/include/nj_lib.h"
+#include "../wnnDictionary/include/nj_err.h"
+#include "../wnnDictionary/include/nj_ext.h"
+#include "../wnnDictionary/include/nj_dic.h"
 
 #include <stdlib.h>
 #include <string.h>
 
-#include "openwnndictionary.h"
+#include "include/openwnndictionary.h"
 
 #include <QtCore/private/qobject_p.h>
+
+#include <QStringList>
 
 /**
  * Error codes

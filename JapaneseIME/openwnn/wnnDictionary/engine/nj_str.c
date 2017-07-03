@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "nj_lib.h"
-#include "nj_ext.h"
+#include "../include/nj_lib.h"
+#include "../include/nj_ext.h"
 
 
 NJ_CHAR *nj_strcpy(NJ_CHAR *dst, NJ_CHAR *src) {

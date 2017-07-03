@@ -19,7 +19,7 @@
  * limitations under the License.
  */
 
-#include "composingtext.h"
+#include "include/composingtext.h"
 
 #include <QtCore/private/qobject_p.h>
 #include <QDebug>

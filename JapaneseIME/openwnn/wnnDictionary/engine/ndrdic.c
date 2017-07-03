@@ -15,11 +15,11 @@
  */
 
 
-#include "nj_lib.h"
-#include "nj_err.h"
-#include "nj_ext.h"
-#include "nj_dic.h"
-#include "njd.h"
+#include "../include/nj_lib.h"
+#include "../include/nj_err.h"
+#include "../include/nj_ext.h"
+#include "../include/nj_dic.h"
+#include "../include/njd.h"
 
 
 #define F_HINSI_TOP_ADDR(h) ((NJ_UINT8*)((h)+NJ_INT32_READ((h)+0x20)))

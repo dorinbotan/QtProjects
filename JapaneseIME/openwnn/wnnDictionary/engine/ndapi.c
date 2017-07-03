@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-#include "nj_lib.h"
-#include "nj_err.h"
-#include "nj_ext.h"
-#include "nj_dic.h"
-#include "njd.h"
+#include "../include/nj_lib.h"
+#include "../include/nj_err.h"
+#include "../include/nj_ext.h"
+#include "../include/nj_dic.h"
+#include "../include/njd.h"
 
 #define NJ_DIC_UNCOMP_EXT_HEADER_SIZE   0x002C      
 #define CREATE_DIC_TYPE_USER            0           

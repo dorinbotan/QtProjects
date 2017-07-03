@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#include "nj_lib.h"
-#include "nj_ext.h"
+#include "../include/nj_lib.h"
+#include "../include/nj_ext.h"
 
 
 #define HIRA_KATA_OFFSET (0x0060)    

@@ -19,11 +19,11 @@
  * limitations under the License.
  */
 
-#include "openwnnenginejajp.h"
-#include "openwnndictionary.h"
-#include "openwnnclauseconverterjajp.h"
-#include "wnnword.h"
-#include "kanaconverter.h"
+#include "include/openwnnenginejajp.h"
+#include "include/openwnndictionary.h"
+#include "include/openwnnclauseconverterjajp.h"
+#include "include/wnnword.h"
+#include "include/kanaconverter.h"
 #include <QtCore/private/qobject_p.h>
 
 class OpenWnnEngineJAJPPrivate : public QObjectPrivate
@@ -191,7 +191,7 @@ public:
 
     void clearPreviousWord()
     {
-        mPreviousWord.reset();
+        mPreviousWord.clear();
     }
 
     OpenWnnEngineJAJP::DictionaryType mDictType;
@@ -282,7 +282,10 @@ int OpenWnnEngineJAJP::convert(ComposingText &text)
         if (headCandidates.isEmpty()) {
             return 0;
         }
-        head.reset(new WnnClause(input, headCandidates.first()));
+
+        QSharedPointer<WnnClause> other =
+               QSharedPointer<WnnClause>(new WnnClause(input, headCandidates.first()));
+        head.swap(other);
 
         /* set the rest of input string */
         input = text.toString(ComposingText::LAYER1, cursor, text.size(ComposingText::LAYER1) - 1);
@@ -296,7 +299,9 @@ int OpenWnnEngineJAJP::convert(ComposingText &text)
         sentence = d->mClauseConverter.consecutiveClauseConvert(input);
     }
     if (!head.isNull()) {
-        sentence.reset(new WnnSentence(*head, sentence.data()));
+        QSharedPointer<WnnSentence> other =
+               QSharedPointer<WnnSentence>(new WnnSentence(*head, sentence.data()));
+        sentence.swap(other);
     }
     if (sentence.isNull()) {
         return 0;
@@ -349,14 +354,22 @@ bool OpenWnnEngineJAJP::learn(WnnWord &word)
              clauses != sentence->elements.constEnd(); clauses++) {
             const WnnWord &wd = *clauses;
             ret = dict.learnWord(wd, d->mPreviousWord.data());
-            d->mPreviousWord.reset(static_cast<WnnWord *>(new WnnSentence(*sentence)));
+
+            QSharedPointer<WnnWord> other =
+                   QSharedPointer<WnnWord>(static_cast<WnnWord *>(new WnnSentence(*sentence)));
+            d->mPreviousWord.swap(other);
+
             if (ret != 0) {
                 break;
             }
         }
     } else {
         ret = dict.learnWord(word, d->mPreviousWord.data());
-        d->mPreviousWord.reset(new WnnWord(word));
+
+        QSharedPointer<WnnWord> other =
+               QSharedPointer<WnnWord>(new WnnWord(word));
+        d->mPreviousWord.swap(other);
+
         d->mClauseConverter.setDictionary(&dict);
     }
 
