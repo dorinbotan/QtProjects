@@ -18,7 +18,7 @@ Q_DECL_EXPORT int main( int argc, char *argv[] )
     QWSServer::setBackground( QBrush( QColor( 0, 0, 0, 0 ) ) );
 
 //    QDeclarativeView view;
-//    view.setSource(QUrl("/tmp/tagarno_osd_engine/qml/tagarno_osd_engine/main.qml"));
+//    view.setSource(QUrl("/tmp/qml/main.qml"));
 //    view.setStyleSheet( "background-color: rgba(0, 0, 0, 0);" );
 
     MainWindow mainWindow;
